@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+<div class="container"> 
+    <h1>Annonces</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annonce.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ annonce.title }}</td>
+            </tr>
+             <tr>
+                <th>Contenu</th>
+                <td>{{ annonce.content }}</td>
+            </tr>
+            <tr>
+                <th>Images</th>
+                <td>{% for image in annonce.images %}
+                <img src="{{ asset ('/uploads/' ~ image.name ) }}" alt="image" width="150">
+                {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('annonces_index') }}">back to list</a>
+</div>
+{% endblock %}

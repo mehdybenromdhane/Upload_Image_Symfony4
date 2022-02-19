@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Annonces index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+                        <th>Contenu</th>
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td>{{ annonce.id }}</td>
+                <td>{{ annonce.title }}</td>
+                <td>{{ annonce.content }}</td>
+
+                <td>
+                    <a href="{{ path('annonces_show', {'id': annonce.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('annonces_new') }}">
+    <div class="btn btn-success"> 
+   Create new
+    </div>
+     </a>
+     </div>
+{% endblock %}
